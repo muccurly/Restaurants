@@ -20,13 +20,12 @@ function Menu(props){
             color:'grey'
         },
         container:{
-            padding:3
         },
         card:{
             width:'45%',
             flex:1,
             marginTop:10,
-            marginBottom:25,
+            height:310,
             marginHorizontal:5,
         }
         
