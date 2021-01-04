@@ -11,7 +11,7 @@ export default class CustomHeader extends Component{
             backgroundColor="#fff" 
             leftComponent={
             !isMenu && !isHome?
-            <Icon name={'arrow-left'} color='red' type={"font-awesome-5"}
+            <Icon name={'arrow-left'} size={30}  color='red' type={"font-awesome-5"}
             onPress={()=> navigation.goBack()}
             />
             :

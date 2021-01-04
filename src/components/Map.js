@@ -1,16 +1,10 @@
 import React,{Component} from 'react'
 import {View,Text,StyleSheet} from 'react-native'
+import { Marker } from 'react-native-maps'
 import MapView from 'react-native-maps'
 export default class Map extends Component{   
-    static navigationOptions = { header: null }
     render(){
-            const styles= StyleSheet.create({
-                container:{
-                    flex:1,
-                    alignContent:'center',
-                    justifyContent:'center',
-                },
-            })
+        const {dishes} = this.props;
             return(
                <MapView 
                style={StyleSheet.absoluteFillObject}
@@ -18,10 +12,16 @@ export default class Map extends Component{
                region={{
                    latitude: 37.78825,
                    longitude: -122.4324,
-                   longitudeDelta:0.015
                 }}
                 >
-
+                {dishes.map((item,index)=>(
+                    <Marker
+                    key={index}
+                    title={item.name}
+                    coordinate={item.latlng}
+                    description={item.address}
+                    />
+                ))}    
                </MapView>
         )
     }

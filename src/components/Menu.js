@@ -33,12 +33,12 @@ function Menu(props){
     })
     const renderMenuItem = ({item,index})=>{
         return(
-       <TouchableOpacity key={index} style={styles.card} >
+       <TouchableOpacity onPress={()=>props.onPress(item.id)} key={index} style={styles.card} >
         <View >
-            <Card.Image  source={{uri:'http://placeimg.com/80/80'}}/>
+            <Card.Image  source={item.photograph}/>
             <Card.Title style={styles.titleCard}>{item.name}</Card.Title>
                 <Text style={styles.textCard} >
-                  {item.address}
+                  {item.address}  
                 </Text>
         </View>
        </TouchableOpacity>     

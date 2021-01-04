@@ -4,7 +4,8 @@ import {
 MapScreen,
 HomeScreen,
 FavoritiesScreen,
-CategoriesScreen}from '../scenes';
+CategoriesScreen,
+DetailsScreen,}from '../scenes';
 
 const HomeStack = createStackNavigator(); 
 const CategoriesStack= createStackNavigator(); 
@@ -14,6 +15,7 @@ const HomeStackScreen = ()=>(
     <HomeStack.Navigator>
         <HomeStack.Screen name='Home' component={HomeScreen} options={{headerShown:false}} />        
         <HomeStack.Screen name='Map' component={MapScreen} options={{headerShown:false}} />
+        <HomeStack.Screen name='RestaurantDetails' component={DetailsScreen}/>
     </HomeStack.Navigator>
 )
 const CategoriesStackScreen = ()=>(

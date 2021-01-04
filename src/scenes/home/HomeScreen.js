@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import Menu from '../../components/Menu';
-import {DISHES} from '../../shared/dishes';
+import {RESTAURANTS} from '../../shared/restaurants';
 import {ScrollView, View} from 'react-native'
 import CustomHeader from '../../components/CustomHeader'
 export default class Main extends Component{
@@ -8,12 +8,17 @@ export default class Main extends Component{
     constructor(props){
         super(props);
         this.state={
-            dishes: DISHES,
+            dishes: RESTAURANTS,
             selectedDish: null
         }
     }
     onDishSelect(dishId){
         this.setState({selectedDish: dishId})
+        const id = RESTAURANTS.findIndex((item)=>item.id=== dishId)
+        console.log(id);
+         const restaurant = RESTAURANTS[id];
+         console.log(restaurant)
+         this.props.navigation.navigate('RestaurantDetails',{restaurant})
     }
     render(){ 
         return(
