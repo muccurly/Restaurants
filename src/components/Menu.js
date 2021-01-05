@@ -1,7 +1,7 @@
 import React from 'react'
 import {View,FlatList,Text,StyleSheet,TouchableOpacity} from 'react-native'
 import {ListItem,Avatar,Card} from 'react-native-elements'
-
+import { ActivityIndicator } from 'react-native';
 
 function Menu(props){
     const numColumns =  2
@@ -35,7 +35,7 @@ function Menu(props){
         return(
        <TouchableOpacity onPress={()=>props.onPress(item.id)} key={index} style={styles.card} >
         <View >
-            <Card.Image  source={item.photograph}/>
+            <Card.Image PlaceholderContent={<ActivityIndicator/>}  source={item.photograph}/>
             <Card.Title style={styles.titleCard}>{item.name}</Card.Title>
                 <Text style={styles.textCard} >
                   {item.address}  

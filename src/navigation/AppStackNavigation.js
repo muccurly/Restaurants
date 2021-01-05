@@ -15,7 +15,7 @@ const HomeStackScreen = ()=>(
     <HomeStack.Navigator>
         <HomeStack.Screen name='Home' component={HomeScreen} options={{headerShown:false}} />        
         <HomeStack.Screen name='Map' component={MapScreen} options={{headerShown:false}} />
-        <HomeStack.Screen name='RestaurantDetails' component={DetailsScreen}/>
+        <HomeStack.Screen name='RestaurantDetails' component={DetailsScreen} options={{headerShown:false}}/>
     </HomeStack.Navigator>
 )
 const CategoriesStackScreen = ()=>(
