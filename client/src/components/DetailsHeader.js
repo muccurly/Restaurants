@@ -1,30 +1,22 @@
 import React from 'react'
 import {View,Text,StyleSheet,TouchableOpacity} from 'react-native'
-import {Avatar,Card,Image,Icon} from 'react-native-elements'
-import ButtonBack from '../../components/ButtonBack'
-export default class DetailsScreen extends React.Component{
-    render(){
-        const {restaurant} = this.props.route.params;
+import {Image,Icon} from 'react-native-elements'
+import ButtonBack from './ButtonBack'
+export default function DetailsHeader(props){
+        const {img} = props;
         return(
-        <View tyle={styles.container}>
-            <Image source={restaurant.photograph}
-            style={styles.headerImg}
+            <Image source={img}
+              style={styles.headerImg}
             >
                 <View style={styles.headerContainer}>
-                 <ButtonBack navigation={this.props.navigation}/>
+                 <ButtonBack navigation={props.navigation}/>
                     <View style={{flexDirection:'row', alignContent:'flex-start'}}>
                     <Icon raised size={20} name="edit" color='red' type="font-awesome-5"  />
                     <Icon raised size={20} name="heart" color='red' type="font-awesome-5" />
                     </View>
-                </View>               
-
+                </View>            
             </Image>
-            <Text>
-                {restaurant.name}
-            </Text>
-        </View>
     )
-    }
 }
 const styles = StyleSheet.create({
     headerContainer:{
@@ -36,5 +28,6 @@ const styles = StyleSheet.create({
     },
     headerImg:{
         height:300,
+        marginBottom:20
     }
 })

@@ -4,24 +4,33 @@ import { Marker } from 'react-native-maps'
 import MapView from 'react-native-maps'
 export default class Map extends Component{   
     render(){
-        const {dishes} = this.props;
+        const {dishes,style} = this.props;
             return(
                <MapView 
-               style={StyleSheet.absoluteFillObject}
+               style={style!=null?style : StyleSheet.absoluteFillObject}
                loadingEnabled={true}
                region={{
                    latitude: 37.78825,
                    longitude: -122.4324,
                 }}
                 >
-                {dishes.map((item,index)=>(
+                {
+                dishes.lenght>1?
+                dishes.map((item,index)=>(
                     <Marker
                     key={index}
                     title={item.name}
                     coordinate={item.latlng}
                     description={item.address}
                     />
-                ))}    
+                ))
+                :
+                <Marker
+                title={dishes.name}
+                coordinate={dishes.latlng}
+                description={dishes.address}
+                />
+            }    
                </MapView>
         )
     }
