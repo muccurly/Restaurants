@@ -35,7 +35,7 @@ function Menu(props){
         return(
        <TouchableOpacity onPress={()=>props.onPress(item.id)} key={index} style={styles.card} >
         <View >
-            <Card.Image PlaceholderContent={<ActivityIndicator/>}  source={item.photograph}/>
+            <Card.Image PlaceholderContent={<ActivityIndicator/>}  source={{uri:item.photograph}}/>
             <Card.Title style={styles.titleCard}>{item.name}</Card.Title>
                 <Text style={styles.textCard} >
                   {item.address}  
@@ -50,7 +50,7 @@ function Menu(props){
     return(
         <View style={styles.container}>
             <FlatList
-                data ={props.dishes}
+                data ={props.data}
                 renderItem={renderMenuItem}
                 keyExtractor={item=> item.id.toString()}
                 numColumns={numColumns}

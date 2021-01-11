@@ -3,15 +3,28 @@ import Menu from '../../components/Menu';
 import {RESTAURANTS} from '../../shared/restaurants';
 import {ScrollView, View} from 'react-native'
 import CustomHeader from '../../components/CustomHeader'
+import RapiService from '../../services/rapi-services'
 export default class Main extends Component{
-
+    rapiService = new RapiService()
     constructor(props){
         super(props);
         this.state={
-            dishes: RESTAURANTS,
+            restaurants:[],
             selectedDish: null
         }
     }
+    componentDidMount(){
+        this.GetData()
+     }
+     GetData=()=>{
+       let data = []
+     this.rapiService.getAllRestaurants().then(e=>data = e).then(()=> this.LoadRestaurants(data)) 
+     }
+     LoadRestaurants=(data)=>{
+         this.setState({
+             restaurants:data
+         });
+     };
     onDishSelect(dishId){
         this.setState({selectedDish: dishId})
         const id = RESTAURANTS.findIndex((item)=>item.id=== dishId)
@@ -25,7 +38,7 @@ export default class Main extends Component{
             <View>
             <CustomHeader isHome={true}  title={'Home'} navigation ={this.props.navigation}/>
                 <ScrollView style={{backgroundColor:'white',padding:5,width:"100%"}}>
-                    <Menu dishes= {this.state.dishes} onPress={(dishId) =>this.onDishSelect(dishId)} />
+                    <Menu data= {this.state.restaurants} onPress={(dishId) =>this.onDishSelect(dishId)} />
                 </ScrollView>
             </View>
             
