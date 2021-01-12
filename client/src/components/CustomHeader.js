@@ -5,7 +5,7 @@ import ButtonBack from './ButtonBack'
 export default class CustomHeader extends Component{
 
     render(){
-        const {title,isHome=false,isMenu=false,navigation} = this.props;
+        const {title,isHome=false,isMenu=false,navigation,data} = this.props;
         return(
             <Header
             backgroundColor="#fff" 
@@ -26,7 +26,7 @@ export default class CustomHeader extends Component{
             null
             }           
             centerComponent={{text:title, style:{fontSize:25}}} 
-            rightComponent={isHome? {onPress:(()=> navigation.navigate('Map')), icon:'map',color:'red',size:30}:null}
+            rightComponent={isHome? {onPress:(()=> navigation.navigate('Map',{data})),icon:'map',color:'red',size:30}:null}
             />
 
         )

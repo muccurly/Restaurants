@@ -1,13 +1,24 @@
 import React from 'react'
-import {View,Text,StyleSheet,TouchableOpacity,ScrollView} from 'react-native'
-import {Avatar,Card,Image,Icon} from 'react-native-elements'
+import {View,Text,StyleSheet,FlatList,ScrollView} from 'react-native'
+import {Card} from 'react-native-elements'
 import DetailsHeader from '../../components/DetailsHeader'
 import {Dimensions } from "react-native";
 import Map from '../../components/Map'
 import mainStyles from '../../styles/styles'
 export default class DetailsScreen extends React.Component{
+
+    renderItem = ({item,index})=>{
+
+        return(
+            <Card containerStyle={{width:'45%'}}>
+                <Card.Title>{item.name}</Card.Title>
+                <Text>{item.date.split('-')}</Text>
+                <Text>{item.comments}</Text>
+            </Card>
+        )
+    }
     render(){
-        const width = Dimensions.get('window').width;
+        const numColumns =  2;
         const {restaurant} = this.props.route.params;
         return(
         <ScrollView tyle={styles.container}>
@@ -16,13 +27,20 @@ export default class DetailsScreen extends React.Component{
                 {restaurant.name}
             </Text>
             <Text style={{fontSize:15,color:'grey',padding:10}}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-             Facilisi cras fermentum odio eu feugiat pretium nibh ipsum. Neque convallis a cras semper auctor neque vitae tempus. 
+            {restaurant.description}
             </Text>
             <Text style={mainStyles.title}>
                 Location
             </Text>
-            <Map style={{height:250}} dishes={restaurant} />
+            <Map style={{height:250}} data={restaurant} />
+            <Text style={mainStyles.title}>
+                Reviews:
+            </Text>
+            <FlatList 
+                data={restaurant.reviews}
+                renderItem={this.renderItem}
+                numColumns={numColumns}
+            />
         </ScrollView>
     )
     }

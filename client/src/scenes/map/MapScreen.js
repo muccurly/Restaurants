@@ -9,15 +9,14 @@ export default class MapScreen extends Component{
     constructor(props){
         super(props)
         this.state={
-            restaurants:[],
+            restaurants:props.route.params.data,
         }   
     }
     componentDidMount(){
         this.getData()
     }
     getData=()=>{
-        let data = [];
-        this.rapiService.getAllRestaurants().then(e=> data=e).then(()=>this.LoadRestaurants(data))
+        
     }
     LoadRestaurants=(data)=>{
         this.setState({
@@ -32,6 +31,7 @@ export default class MapScreen extends Component{
                 justifyContent:'center',
             }
         })
+        // console.log(this.state.restaurants)
         return(
             <View style={styles.container}>
                 <CustomHeader title={'Map View'} navigation ={this.props.navigation}/>

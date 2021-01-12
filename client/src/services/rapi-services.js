@@ -42,6 +42,7 @@ export default class RapiService{
             photograph: restaurant.photograph,
             price:restaurant.price,
             genre:restaurant.genre,
+            description: restaurant.description,
             address: restaurant.address,
             kitchen:this._transformKitchen(restaurant.kitchen),
             latlng: {

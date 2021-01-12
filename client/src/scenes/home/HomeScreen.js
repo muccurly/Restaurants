@@ -27,16 +27,12 @@ export default class Main extends Component{
      };
     onDishSelect(dishId){
         this.setState({selectedDish: dishId})
-        const id = RESTAURANTS.findIndex((item)=>item.id=== dishId)
-        console.log(id);
-         const restaurant = RESTAURANTS[id];
-         console.log(restaurant)
-         this.props.navigation.navigate('RestaurantDetails',{restaurant})
+        this.rapiService.getRestourant(dishId).then((restaurant)=>this.props.navigation.navigate('RestaurantDetails',{restaurant}))
     }
     render(){ 
         return(
             <View>
-            <CustomHeader isHome={true}  title={'Home'} navigation ={this.props.navigation}/>
+            <CustomHeader isHome={true}  title={'Home'} data={this.state.restaurants} navigation ={this.props.navigation}/>
                 <ScrollView style={{backgroundColor:'white',padding:5,width:"100%"}}>
                     <Menu data= {this.state.restaurants} onPress={(dishId) =>this.onDishSelect(dishId)} />
                 </ScrollView>

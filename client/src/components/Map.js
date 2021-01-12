@@ -5,20 +5,21 @@ import MapView from 'react-native-maps'
 export default class Map extends Component{   
     render(){
         const {data,style} = this.props;
-        
+        console.log(data)
             return(
                <MapView 
                style={style!=null?style : StyleSheet.absoluteFillObject}
                loadingEnabled={true}
                region={{
-                   latitude: 37.78825,
-                   longitude: -122.4324,
+                   latitude: 51.1605,
+                   longitude: 71.4704,
+                   latitudeDelta: 0.500,
+                   longitudeDelta: 0.080,
                 }}
                 >
                 {
-                data.lenght>1?
+                data.length>1?
                 data.map((item,index)=>(
-                    console.log(item),
                     <Marker
                     key={index}
                     title={item.name}
@@ -27,7 +28,6 @@ export default class Map extends Component{
                     />
                 ))
                 :
-                console.log(data.latlng),
                 <Marker
                 title={data.name}
                 coordinate={data.latlng}

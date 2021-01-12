@@ -5,7 +5,7 @@ import ButtonBack from './ButtonBack'
 export default function DetailsHeader(props){
         const {img} = props;
         return(
-            <Image source={img}
+            <Image source={{uri:img}}
               style={styles.headerImg}
             >
                 <View style={styles.headerContainer}>
