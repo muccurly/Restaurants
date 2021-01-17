@@ -20,6 +20,7 @@ function Menu(props){
             color:'grey'
         },
         container:{
+            width:'100%'
         },
         card:{
             width:'45%',
@@ -33,9 +34,9 @@ function Menu(props){
     })
     const renderMenuItem = ({item,index})=>{
         return(
-       <TouchableOpacity onPress={()=>props.onPress(item.id)} key={index} style={styles.card} >
+       <TouchableOpacity onPress={()=>console.log()} key={index} style={styles.card} >
         <View >
-            <Card.Image PlaceholderContent={<ActivityIndicator/>}  source={{uri:item.photograph}}/>
+            <Card.Image PlaceholderContent={<ActivityIndicator/>}  source={item.photograph}/>
             <Card.Title style={styles.titleCard}>{item.name}</Card.Title>
                 <Text style={styles.textCard} >
                   {item.address}  

@@ -25,7 +25,7 @@ const CategoriesStackScreen = ()=>(
 )
 const FavoritiesStackScreen = ()=>(
     <FavoritiesStack.Navigator>
-        <FavoritiesStack.Screen name='Favorities' component={FavoritiesScreen} options={{headerShown:false}}/>
+        <FavoritiesStack.Screen name='Favorities' component={FavoritiesScreen}/>
     </FavoritiesStack.Navigator>
 )
 

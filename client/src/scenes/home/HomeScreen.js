@@ -17,8 +17,9 @@ export default class Main extends Component{
         this.GetData()
      }
      GetData=()=>{
-       let data = []
-     this.rapiService.getAllRestaurants().then(e=>data = e).then(()=> this.LoadRestaurants(data)) 
+    let data = []
+    this.LoadRestaurants(RESTAURANTS)
+    //  this.rapiService.getAllRestaurants().then(e=>data = e).then(()=> this.LoadRestaurants(data)) 
      }
      LoadRestaurants=(data)=>{
          this.setState({

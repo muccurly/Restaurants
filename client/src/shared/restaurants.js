@@ -2,7 +2,7 @@ export const RESTAURANTS =
     [
       {
         id: 1,
-        name: 'Mission Chinese Food',
+        name: "Pizza",
         neighborhood: 'Manhattan',
         photograph: require('../assets/images/1.jpg'),
         address: '171 E Broadway, New York, NY 10002',

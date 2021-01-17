@@ -4,10 +4,12 @@ import React from 'react'
 import {HomeStackScreen,CategoriesStackScreen,FavoritiesStackScreen} from './AppStackNavigation'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 const Tab = createMaterialBottomTabNavigator();
+import { SafeAreaProvider} from 'react-native-safe-area-context';
 
 const MyTabs=()=>{
     return(
-        <NavigationContainer>
+        <SafeAreaProvider>
+            <NavigationContainer>
                 <Tab.Navigator
                 activeColor="red"
                 barStyle={{backgroundColor:'#fff'}}
@@ -31,7 +33,8 @@ const MyTabs=()=>{
                         )
                     }}/> 
                 </Tab.Navigator>
-        </NavigationContainer>
+            </NavigationContainer>
+        </SafeAreaProvider>
     )
 }
 
